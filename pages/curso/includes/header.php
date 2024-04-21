@@ -19,15 +19,10 @@
             <div class="collapse navbar-collapse" id="navbarColor01">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">Home
-                            <span class="visually-hidden">(current)</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="../outsession.php">Cerrar Sesion</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Cursos</a>
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Curso</a>
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="#">Clases en Vivo</a>
                             <a class="dropdown-item" href="#">Recursos</a>

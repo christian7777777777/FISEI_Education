@@ -2,8 +2,18 @@
     include("includes/header.php");
     session_start();
     $name = $_SESSION['username'];
-?>
+    $curso = $_SESSION['curso'];
 
+    if($curso=="Programacion Web"){
+        $logo = "img/portada_ProgramacionWeb.jpg";
+    }elseif($curso=="Electronica Basica"){
+        $logo = "img/portada_ElectronicaBasica.jpeg";
+    }elseif($curso=="Automatizacion"){
+        $logo = "img/portada_Automatizacion.webp";
+    }elseif($curso=="Introduccion a la Robotica"){
+        $logo = "img/portada_IntroduccionRobotica.webp";
+    }
+?>
 <div class="container">
     <div class="page-header" id="banner">
         <div class="row">
@@ -13,14 +23,14 @@
             </div>
             <div class="col-lg-4 col-md-5 col-sm-6">
                 <div class="sponsor">
-                    <img src="img/portada.jpg" alt="logo portada" width="400" height="200">
+                    <img src=<?php echo "$logo" ;?> alt="logo portada" width="400" height="200">
                 </div>
             </div>
         </div>
     </div>
     <div class="row">
         <div class="jumbotron">
-            <h1 class="display-3">Programacion WEB</h1>
+            <h1 class="display-3"><?php echo $curso ;?></h1>
             <p class="lead">Bienvenodo al curso !!! <?php echo "<strong> $name </strong>"?></p>
             <hr class="my-2">
             <p>More info</p>
@@ -28,5 +38,4 @@
                 <a class="btn btn-primary btn-lg" href="#" role="button">Empezar</a>
             </p>
         </div>
-
 <?php include("includes/footer.php");?>

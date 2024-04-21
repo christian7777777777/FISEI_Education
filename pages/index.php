@@ -6,7 +6,7 @@
     <hr class="my-2">
     <p>Mas informacion</p>
     <p class="lead">
-        <a class="btn btn-primary btn-lg" href="Jumbo action link" role="button">Registrarse</a>
+        <a class="btn btn-primary btn-lg" href="Login.php" role="button">Login</a>
     </p>
 </div>
 <?php include("../includes/footer.php");?>

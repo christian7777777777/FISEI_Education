@@ -52,38 +52,30 @@
         
                 if ($array['contar']>0){
                     session_start();
-                    $_SESSION['username'] = $username;
                     $curso = $array['Curso'];
-                    
-                    if($curso=="Programacion Web"){
-                        header("location: ProgramacionWeb/index.php");
-                    }
-                    /*elseif($curso=="Electronica Basica"){
+                    $_SESSION['username'] = $username;
+                    $_SESSION['curso'] = $curso;
 
-                    }elseif($curso=="Automatizacion"){
-
-                    }elseif($curso=="Introduccion a la Robotica"){
-
-                    }*/
-        
+                    header("location: curso/index.php");
                     setcookie("nombreusuario", $username, time() + 84600, "/");
                     setcookie("contrasena", $password, time() + 84600, "/");
-        
-        
                 }else{
-        
                     ?>
-                    <h3 class="error"> Usuario o Contrasena Incorrectos</h3>
+                    <div class="alert alert-dismissible alert-danger">
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                        <strong>Fallo en Inicio de Sesion !!!</strong> Usuario o Contrasena Incorrectos <a href="login.php" class="alert-link">Reintentar</a>.
+                    </div>
                     <?php 
                 }
             
             }else{
                 ?>
-                <h3 class="error">Complete todos los datos</h3>
+                <div class="alert alert-dismissible alert-danger">
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    <strong>Fallo en Inicio de Sesion !!!</strong> Complete todos los datos <a href="login.php" class="alert-link">Reintentar</a>.
+                </div>
                 <?php 
             }
-
-
         }
     }
     include("../includes/footer.php");
