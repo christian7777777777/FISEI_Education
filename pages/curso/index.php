@@ -1,18 +1,23 @@
-<?php 
-    include("includes/header.php");
+<?php  
     session_start();
     $name = $_SESSION['username'];
+    $password = $_SESSION['password'];
     $curso = $_SESSION['curso'];
 
-    if($curso=="Programacion Web"){
-        $logo = "img/portada_ProgramacionWeb.jpg";
-    }elseif($curso=="Electronica Basica"){
-        $logo = "img/portada_ElectronicaBasica.jpeg";
-    }elseif($curso=="Automatizacion"){
-        $logo = "img/portada_Automatizacion.webp";
-    }elseif($curso=="Introduccion a la Robotica"){
-        $logo = "img/portada_IntroduccionRobotica.webp";
+    if(strlen($name) >= 1 && strlen($password) >= 1 ){
+        if($curso=="Programacion Web"){
+            $logo = "img/portada_ProgramacionWeb.jpg";
+        }elseif($curso=="Electronica Basica"){
+            $logo = "img/portada_ElectronicaBasica.jpeg";
+        }elseif($curso=="Automatizacion"){
+            $logo = "img/portada_Automatizacion.webp";
+        }elseif($curso=="Introduccion a la Robotica"){
+            $logo = "img/portada_IntroduccionRobotica.webp";
+        }
+    }else{
+        header("location: ../login.php");
     }
+include("includes/header.php");
 ?>
 <div class="container">
     <div class="page-header" id="banner">

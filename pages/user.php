@@ -1,6 +1,6 @@
 <?php 
     include("../includes/header.php");
-    include("../includes/conexionBD.php");
+    include("../includes/conexionbd.php");
     
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
@@ -15,8 +15,8 @@
             $generoUsuario = trim($_POST['GeneroUsuario']);
             $cursoUsuario = trim($_POST['CursoUsuario']);
             
-            $fecha = date("d/m/y");
-            $consulta = "INSERT INTO `usuarios` (`ID`, `Nombres`, `Apellidos`, `Cedula`, `Edad`, `Telefono`, `Email`, `Contrasena`, `Genero`, `Curso`, `Fecha_Registro`) 
+            $fecha = date("Y-m-d H:i:s");
+            $consulta = "INSERT INTO `registro_usuarios` (`id`, `Nombres`, `Apellidos`, `Cedula`, `Edad`, `Telefono`, `Email`, `Contrasena`, `Genero`, `Curso`, `Fecha_Registro`) 
             VALUES (NULL, '$nombreUsuario', '$apellidoUsuario', '$cedulaUsuario', '$edadUsuario', '$telefonoUsuario', '$emailUsuario', '$contrasenaUsuario', '$generoUsuario', '$cursoUsuario', '$fecha');";
             
             $resultado = mysqli_query($conn, $consulta);
@@ -25,7 +25,7 @@
                 ?>
                 <div class="alert alert-dismissible alert-success">
                     <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                    <strong>Bien Hecho <?php echo $nombreUsuario ?>!</strong> Te has registrado correctamente!!!<a href="index.php" class="alert-link"><?php echo $cursoUsuario?></a>.
+                    <strong>Te has registrado correctamente!!! <?php echo $nombreUsuario ?>!</strong>Inicia Sesion para empezar el curso<a href="login.php" class="alert-link"><?php echo $cursoUsuario?></a>.
                 </div>
                 <?php
             }else{
@@ -44,7 +44,7 @@
                 $password = trim($_POST["ContrasenaUsuario"]);
         
                 #$consulta = "INSERT INTO `datos2` (`ID`, `Nombre`, `Correo`, `Cedula`, `Fecha`) VALUES (NULL, '$name', '$email', '$cedula', '$fecha');";
-                $consulta = "SELECT COUNT(*) as contar, Curso FROM usuarios WHERE Email='$username' AND Contrasena='$password'";
+                $consulta = "SELECT COUNT(*) as contar, Curso FROM registro_usuarios WHERE Email='$username' AND Contrasena='$password'";
         
                 $resultado = mysqli_query($conn, $consulta);
         
@@ -54,10 +54,12 @@
                     session_start();
                     $curso = $array['Curso'];
                     $_SESSION['username'] = $username;
+                    $_SESSION['password'] = $password;
                     $_SESSION['curso'] = $curso;
 
                     header("location: curso/index.php");
                     setcookie("nombreusuario", $username, time() + 84600, "/");
+                    setcookie("cursouario", $curso, time() + 84600, "/");
                     setcookie("contrasena", $password, time() + 84600, "/");
                 }else{
                     ?>

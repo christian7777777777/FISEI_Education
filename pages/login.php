@@ -1,6 +1,9 @@
 <?php include("../includes/header.php");?>
-<div class="jumbotron">
-    <h3 class="display-3 text-center">Iniciar Sesion</h3>
+<div class="card border-primary mb-3 " style="max-width: 40rem;">
+  <div class="card-header text-center">
+    <h2>Login</h2>
+  </div>
+  <div class="card-body">
     <form  action="user.php" method="post">
         <fieldset>
             <div>
@@ -14,7 +17,8 @@
             </div>
         </fieldset>
         <fieldset>
-        <div>
+            <div>
+                <br>
                 <input type="submit" class="btn btn-primary" value="Login" name="Boton">
             </div> 
         </fieldset>
